@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getStory } from '../services/hnApi';
+import { StoryWrapper, StoryTitle, StoryMeta, StoryMetaElement } from '../styles/StoryStyles';
+import {mapTime} from '../mappers/mapTime';
 
 // Pas une fonction mais un composant, il faut passer les parametres via ({})
 export const Story = ({storyId})  => {
@@ -15,12 +17,19 @@ export const Story = ({storyId})  => {
     // return <p>{JSON.stringify(story)}</p>;
 
     return story && story.url ? (
-        <div>
-            <a href={story.url}>
-                <h3>{story.title}</h3>
-            </a>
-            <p>By: {story.by}</p>
-            <p>Posted: {story.time}</p>
-        </div>
+        <StoryWrapper data-testid="story">
+            <StoryTitle>
+                <a href={story.url}>{story.title}</a>
+            </StoryTitle>
+
+            <StoryMeta>
+                <span data-testid="story-by">
+                    <StoryMetaElement color="#000">By:</StoryMetaElement> {story.by}
+                </span>
+                <span data-testid="story-time">
+                    <StoryMetaElement color="#000">Posted:</StoryMetaElement> {mapTime(story.time)}
+                </span>
+            </StoryMeta>
+        </StoryWrapper>
     ) : null;
 }
