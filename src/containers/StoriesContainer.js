@@ -3,7 +3,7 @@ import { getStoryIds } from '../services/hnApi';
 import { Story } from '../components/Story';
 import { GlobalStyle, StoriesContainerWrapper } from '../styles/StoryContainerStyles';
 
-import { useInfiniteScroll } from '../hooks/useInfiniteScrolls';
+import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 
 export const StoriesContainer = () => {
     // Données à afficher: initialisation d'un tableau vide faisant office de valeur par défaut
@@ -14,7 +14,7 @@ export const StoriesContainer = () => {
     useEffect(() => {
       // Met à jour le contenu de la page 
       getStoryIds().then(newsIds => setStoryIds(newsIds));
-    }, []);
+    });
   
     // return storyIds.map( (storyId, index) => <Story key={index} storyId={storyId} /> );
 
