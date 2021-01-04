@@ -38,9 +38,7 @@ export const useInfiniteScroll = () => {
         window.addEventListener('scroll', handleScroll);
         // Cleanup de l'effet au unmount
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [handleScroll]);
 
     return { count };
-
-    // handleScroll();
 }

@@ -12,7 +12,7 @@ export const Story = ({storyId})  => {
             data && data.url && setStory(data);
         });
         
-    }, []);
+    }, [storyId]);
 
     // return <p>{JSON.stringify(story)}</p>;
 
